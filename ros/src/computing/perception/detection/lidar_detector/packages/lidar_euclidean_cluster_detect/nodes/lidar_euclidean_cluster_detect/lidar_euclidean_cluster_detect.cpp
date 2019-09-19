@@ -831,8 +831,8 @@ void segmentByDistance(const pcl::PointCloud<pcl::PointXYZ>::Ptr in_cloud_ptr,
     polygon.header = _velodyne_header;
 
     if (final_clusters[i]->IsValid()
-        //&& bounding_box.dimensions.x >0 && bounding_box.dimensions.y >0 && bounding_box.dimensions.z > 0
-        //&&	bounding_box.dimensions.x < _max_boundingbox_side && bounding_box.dimensions.y < _max_boundingbox_side
+        && bounding_box.dimensions.x > 0 && bounding_box.dimensions.y > 0 && bounding_box.dimensions.z > 0
+        && bounding_box.dimensions.x < _max_boundingbox_side && bounding_box.dimensions.y < _max_boundingbox_side
         )
     {
       in_out_boundingbox_array.boxes.push_back(bounding_box);

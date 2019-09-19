@@ -37,6 +37,7 @@
 
   <!-- rosrun lidar_tracker euclidean_cluster _points_node:="" -->
   <node pkg="lidar_euclidean_cluster_detect" type="lidar_euclidean_cluster_detect" name="lidar_euclidean_cluster_detect" output="screen">
+    
     <param name="points_node" value="$(arg points_node)" /> <!-- Can be used to select which pointcloud node will be used as input for the clustering -->
     <param name="remove_ground" value="$(arg remove_ground)" />
     <param name="downsample_cloud" value="$(arg downsample_cloud)" />
@@ -66,6 +67,8 @@
     <param name="clustering_distances" value="$(arg clustering_distances)" /><!-- Euclidean Clustering threshold distance for each segment -->
 
     <remap from="/points_raw" to="/sync_drivers/points_raw" if="$(arg sync)" />
+    <!--remap from="/bounding_boxes" to="/trash"/-->
+    <!--remap from="/points_cluster" to="/trash_2"/--> 
   </node>
 
 </launch>

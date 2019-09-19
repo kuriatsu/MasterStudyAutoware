@@ -409,11 +409,13 @@ if(m_params.bEnableHMI)
 
 	m_ModifiedWayPointsCosts.clear();
 }
-	if(ret == 0) generatedTotalPaths.clear();
+	if(ret == 0){ generatedTotalPaths.clear(); std::cout << "generatedTotalPaths.cleared" << std::endl;}
 
 
 	if(generatedTotalPaths.size() > 0 && generatedTotalPaths.at(0).size()>0)
 	{
+		ROS_INFO_STREAM(generatedTotalPaths.size());
+		ROS_INFO_STREAM(generatedTotalPaths.at(0).size());
 		if(m_params.bEnableSmoothing)
 		{
 			for(unsigned int i=0; i < generatedTotalPaths.size(); i++)
@@ -435,6 +437,9 @@ if(m_params.bEnableHMI)
 	{
 		std::cout << "Can't Generate Global Path for Start (" << startPoint.pos.ToString()
 							<< ") and Goal (" << goalPoint.pos.ToString() << ")" << std::endl;
+		ROS_INFO_STREAM(generatedTotalPaths.size());
+		//ROS_INFO_STREAM(generatedTotalPaths.at(0).size());
+		
 	}
 	return false;
 }

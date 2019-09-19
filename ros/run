@@ -5,7 +5,7 @@ MY_PATH=$(readlink -f  $(dirname $0))
 # what type of terminal
 OPTION_WORKING_DIR='--working-directory'
 OPTION_CORE_GEOMETRY='--geometry=50x10+0+0'
-OPTION_RM_GEOMETRY='--geometry=50x10+500+0'
+OPTION_RM_GEOMETRY='--geometry=50x10+0+400'
 OPTION_COMMAND='--command'
 
 
@@ -28,7 +28,7 @@ elif [ $(which lxterminal) ]; then
 elif [ $(which konsole) ]; then
     TERMINAL=konsole
     OPTION_WORKING_DIR='--workdir'
-    OPTION_CORE_GEOMETRY=''
+    OPTION_CORE_GEOMETRY='--geometry=50x10+0+0'
     OPTION_RM_GEOMETRY=''
     OPTION_PM_GEOMETRY=''
     OPTION_COMMAND='-e'

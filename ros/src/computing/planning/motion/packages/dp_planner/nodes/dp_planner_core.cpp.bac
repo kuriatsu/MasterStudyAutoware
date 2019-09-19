@@ -126,8 +126,8 @@ PlannerX::PlannerX()
 
 	sub_initialpose 	= nh.subscribe("/initialpose", 				1,		&PlannerX::callbackGetInitPose, 		this);
 	sub_current_pose 	= nh.subscribe("/current_pose", 			1,		&PlannerX::callbackGetCurrentPose, 		this);
-	sub_cluster_cloud 	= nh.subscribe("/int_cluster",			1,		&PlannerX::callbackGetCloudClusters, 	this);
-	sub_bounding_boxs  	= nh.subscribe("/int_boundingbox",			1,		&PlannerX::callbackGetBoundingBoxes, 	this);
+	sub_cluster_cloud 	= nh.subscribe("/cloud_clusters",			1,		&PlannerX::callbackGetCloudClusters, 	this);
+	sub_bounding_boxs  	= nh.subscribe("/bounding_boxes",			1,		&PlannerX::callbackGetBoundingBoxes, 	this);
 	sub_WayPlannerPaths = nh.subscribe("/realtime_cost_map",		1,		&PlannerX::callbackGetCostMap, 	this);
 
 	/**
@@ -816,7 +816,7 @@ void PlannerX::PlannerMainLoop()
 		//Traffic Light Simulation Part
 		if(m_bGreenLight && UtilityHNS::UtilityH::GetTimeDiffNow(m_TrafficLightTimer) > 5)
 		{
-			m_bGreenLight = true;
+			m_bGreenLight = false;
 			UtilityHNS::UtilityH::GetTickCount(m_TrafficLightTimer);
 		}
 		else if(!m_bGreenLight && UtilityHNS::UtilityH::GetTimeDiffNow(m_TrafficLightTimer) > 10.0)

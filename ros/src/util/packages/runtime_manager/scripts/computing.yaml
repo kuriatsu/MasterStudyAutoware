@@ -3757,7 +3757,7 @@ params :
     - name      : velocity_max
       desc      : All velocities are limited under Vmax [km/h]
       label     : Velocity Max Limit - Vmax [km/h]
-      min       : 10.0
+      min       : 1.0
       max       : 60.0
       v         : 20.0
       cmd_param :
@@ -3766,7 +3766,7 @@ params :
     - name      : radius_thresh
       desc      : When the estimated turning radius > Rth [m], the area is recognized as a curve
       label     : Curve Recognize - Rth [m]
-      min       : 10.0
+      min       : 1.0
       max       : 100.0
       v         : 20.0
       cmd_param :

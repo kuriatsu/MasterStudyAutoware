@@ -644,8 +644,8 @@ void RosHelpers::ConvertFromAutowareCloudClusterObstaclesToPlannerH(const Planne
 		double distance_y = fabs(relative_point.y);
 
 		double size = (obj.w+obj.l)/2.0;
-//		if(size <= 0.25 || size >= 5 || distance_y > 20.0 || distance_x > 20.0)
-//			continue;
+		if(size <= 0.25 || size >= 5 || distance_y > 20.0 || distance_x > 20.0)
+			continue;
 
 //		if(distance_y > 10.0 || distance_x > 10.0)
 //			continue;

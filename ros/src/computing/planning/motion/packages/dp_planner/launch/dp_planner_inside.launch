@@ -1,0 +1,97 @@
+<!-- -->
+<launch>
+	<arg name="maxVelocity" 				default="0.6" />
+	<arg name="minVelocity" 				default="0.0" />	
+	<arg name="maxLocalPlanDistance" 		default="30.0" />
+	<arg name="samplingTipMargin" 			default="1.0"  /> 
+	<arg name="samplingOutMargin" 			default="2.0" /> 
+	<arg name="samplingSpeedFactor" 		default="0.25" />
+	<arg name="pathDensity" 				default="0.5" />
+	<arg name="rollOutDensity" 				default="0.4" />
+	<arg name="rollOutsNumber" 				default="4"    />
+	<arg name="horizonDistance" 			default="8.0"  />
+	
+	<arg name="minFollowingDistance" 		default="7.0"  /> <!-- should be bigger than Distance to follow -->	
+	<arg name="minDistanceToAvoid" 			default="4.0" /> <!-- should be smaller than minFollowingDistance and larger than maxDistanceToAvoid -->
+	<arg name="maxDistanceToAvoid" 			default="1.0"  /> <!-- should be smaller than minDistanceToAvoid -->
+	<arg name="speedProfileFactor"			default="1"  />
+	
+	<arg name="horizontalSafetyDistance"	default="0.25"  />
+	<arg name="verticalSafetyDistance"		default="1.5"  />
+	
+	<arg name="enableSwerving" 				default="true"  />
+	<arg name="enableFollowing" 			default="true" />
+	<arg name="enableHeadingSmoothing" 		default="true" />
+	<arg name="enableTrafficLightBehavior" 	default="false" />
+	<arg name="enableStopSignBehavior" 		default="true" />	
+	<arg name="enableLaneChange" 			default="false" />
+	<arg name="enabTrajectoryVelocities"	default="true" /> <!-- enable when using autoware's pure pursuit node-->
+	<arg name="enablePlannerDynamicSwitch"  default="false" />	
+
+	<arg name="width" 						default="0.6"  />
+	<arg name="length" 						default="0.7"  />
+	<arg name="wheelBaseLength" 			default="0.6"  />
+	<arg name="turningRadius"				default="2.0"  />
+	<arg name="maxSteerAngle" 				default="1.0" />
+	
+	<arg name="steeringDelay" 				default="1.2" />
+	<arg name="minPursuiteDistance" 		default="1.0"  />
+	
+	<arg name="enableObjectTracking" 		default="false" /> <!-- use internal kalman filter for track obstacles " -->
+	<arg name="enableOutsideControl" 		default="false" /> <!-- use internal kalman filter for track obstacles " -->	
+	<arg name="velocitySource"				default="1" /> <!-- read velocities from (0- Odometry, 1- autoware current_velocities, 2- car_info) "" -->
+	
+	<arg name="mapSource" 					default="2" /> <!-- Autoware=0, Vector Map Folder=1, kml=2 -->
+	<arg name="mapFileName" 				default="/home/kuriatsu/MAP/takeda_lab/takeda_lab.kml" />
+
+	<node pkg="dp_planner" type="dp_planner" name="dp_planner" output="screen">
+
+		<param name="maxVelocity" 					value="$(arg maxVelocity)" />
+	    <param name="minVelocity" 					value="$(arg minVelocity)" />
+	    	    		
+		<param name="maxLocalPlanDistance" 			value="$(arg maxLocalPlanDistance)" />
+		<param name="samplingTipMargin" 			value="$(arg samplingTipMargin)" />
+		<param name="samplingOutMargin" 			value="$(arg samplingOutMargin)" />
+		<param name="samplingSpeedFactor" 			value="$(arg samplingSpeedFactor)" />
+		<param name="pathDensity" 					value="$(arg pathDensity)" />
+		<param name="rollOutDensity" 				value="$(arg rollOutDensity)" />
+		<param name="rollOutsNumber" 				value="$(arg rollOutsNumber)" />
+		<param name="horizonDistance" 				value="$(arg horizonDistance)" />
+		
+		<param name="minFollowingDistance" 			value="$(arg minFollowingDistance)" />		
+		<param name="minDistanceToAvoid" 			value="$(arg minDistanceToAvoid)" />
+		<param name="maxDistanceToAvoid" 			value="$(arg maxDistanceToAvoid)" />
+		<param name="speedProfileFactor"			value="$(arg speedProfileFactor)" />
+		
+		<param name="horizontalSafetyDistance"		value="$(arg horizontalSafetyDistance)" />
+		<param name="verticalSafetyDistance"		value="$(arg verticalSafetyDistance)" />
+		
+		<param name="enableSwerving" 				value="$(arg enableSwerving)" />
+		<param name="enableFollowing" 				value="$(arg enableFollowing)" />
+		<param name="enableHeadingSmoothing" 		value="$(arg enableHeadingSmoothing)" />
+		<param name="enableTrafficLightBehavior" 	value="$(arg enableTrafficLightBehavior)" />
+		<param name="enableStopSignBehavior" 		value="$(arg enableStopSignBehavior)" />		
+		<param name="enableLaneChange" 				value="$(arg enableLaneChange)" />
+		<param name="enabTrajectoryVelocities" 		value="$(arg enabTrajectoryVelocities)" />
+		
+		<param name="width" 						value="$(arg width)" />
+		<param name="length" 						value="$(arg length)" />
+		<param name="wheelBaseLength" 				value="$(arg wheelBaseLength)" />
+		<param name="turningRadius" 				value="$(arg turningRadius)" />
+		<param name="maxSteerAngle" 				value="$(arg maxSteerAngle)" />
+		
+		<param name="steeringDelay" 				value="$(arg steeringDelay)" />
+		<param name="minPursuiteDistance" 			value="$(arg minPursuiteDistance)" />
+		
+		<param name="enableObjectTracking" 			value="$(arg enableObjectTracking)" />
+		<param name="enableOutsideControl" 			value="$(arg enableOutsideControl)" />
+		
+		<param name="velocitySource" 				value="$(arg velocitySource)" />
+		<param name="mapSource" 					value="$(arg mapSource)" />
+		<param name="mapFileName" 					value="$(arg mapFileName)" />
+
+		<param name="enablePlannerDynamicSwitch"		value="$(arg enablePlannerDynamicSwitch)"/>
+
+	</node>
+
+</launch>

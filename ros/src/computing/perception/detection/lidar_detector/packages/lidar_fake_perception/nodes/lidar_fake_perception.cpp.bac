@@ -22,7 +22,7 @@ LidarFakePerception::LidarFakePerception() : nh_(), private_nh_("~")
   private_nh_.param<double>("object_lifetime", object_lifetime_, -1);
   private_nh_.param<double>("object_points_space", object_points_space_, 0.2);
 
-  private_nh_.param<std::string>("object_label", object_label_, "person");
+  private_nh_.param<std::string>("object_label", object_label_, "Stable");
   private_nh_.param<std::string>("object_frame", object_frame_, "velodyne");
 
   object_initial_pose_sub_ =
@@ -35,7 +35,7 @@ LidarFakePerception::LidarFakePerception() : nh_(), private_nh_("~")
   fake_points_pub_ = nh_.advertise<sensor_msgs::PointCloud2>("/fake_points", 1);
 
   fake_object_id_ = 0;      // overwritten by real object ids
-  global_frame_ = "velodyne";  // overwritten by object initial pose
+  global_frame_ = "world";  // overwritten by object initial pose
 
   fake_object_pose_initialized_ = false;
 }
